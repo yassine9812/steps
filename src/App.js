@@ -6,21 +6,29 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-export default function App() {
+export default function Step() {
   const [step, setStep] = useState(1);
   const [isOpen, SetIsOpen] = useState(true);
 
+  const [count, setCount] = useState(0);
+  const [step1, setSetp1] = useState(1);
+
+  const date = new Date(Date());
+  date.setDate(date.getDate() + count);
+
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((s) => s - 1);
   }
 
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) {
+      setStep((s) => s + 1);
+    }
   }
 
   return (
     <>
-      <button className="close" onClick={() => SetIsOpen(!isOpen)}>
+      <button className="close" onClick={() => SetIsOpen((is) => !is)}>
         &times;
       </button>
 
@@ -51,6 +59,30 @@ export default function App() {
           </div>
         </div>
       )}
+          <div>
+      <div>
+        <button onClick={() => setSetp1((c) => c - 1)}>-</button>
+        <span>Step: {step1} </span>
+        <button onClick={() => setSetp1((c) => c + 1)}>+</button>
+      </div>
+
+      <div>
+        <button onClick={() => setCount((c) => c - step1)}>-</button>
+        <span>Count: {count} </span>
+        <button onClick={() => setCount((c) => c + step1)}>+</button>
+      </div>
+
+      <p>
+        <span>
+          {count === 0
+            ? "Today is "
+            : count > 0
+            ? `${count} days from today`
+            : `${Math.abs(count)} days ago was `}
+        </span>
+        <span>{date.toDateString()}</span>
+      </p>
+    </div>
     </>
   );
 }
