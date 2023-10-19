@@ -59,30 +59,30 @@ export default function Step() {
           </div>
         </div>
       )}
-          <div>
       <div>
-        <button onClick={() => setSetp1((c) => c - 1)}>-</button>
-        <span>Step: {step1} </span>
-        <button onClick={() => setSetp1((c) => c + 1)}>+</button>
-      </div>
+        <div>
+          <button onClick={() => setSetp1((c) => c - 1)}>-</button>
+          <span>Step: {step1} </span>
+          <button onClick={() => setSetp1((c) => c + 1)}>+</button>
+        </div>
 
-      <div>
-        <button onClick={() => setCount((c) => c - step1)}>-</button>
-        <span>Count: {count} </span>
-        <button onClick={() => setCount((c) => c + step1)}>+</button>
-      </div>
+        <div>
+          <button onClick={() => setCount((c) => c - step1)}>-</button>
+          <span>Count: {count} </span>
+          <button onClick={() => setCount((c) => c + step1)}>+</button>
+        </div>
 
-      <p>
-        <span>
-          {count === 0
-            ? "Today is "
-            : count > 0
-            ? `${count} days from today`
-            : `${Math.abs(count)} days ago was `}
-        </span>
-        <span>{date.toDateString()}</span>
-      </p>
-    </div>
+        <p>
+          <span>
+            {count === 0
+              ? "Today is "
+              : count > 0
+              ? `${count} days from today`
+              : `${Math.abs(count)} days ago was `}
+          </span>
+          <span>{date.toDateString()}</span>
+        </p>
+      </div>
     </>
   );
 }
